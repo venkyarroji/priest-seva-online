@@ -1,46 +1,70 @@
 import { Link } from "react-router-dom";
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, Clock, ArrowUp } from "lucide-react";
+
+const footerLinks = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
+  { to: "/contact", label: "Contact" },
+];
+
+const servicesList = [
+  "Navagraha Pooja",
+  "Sarpa Dosha Shanti",
+  "Kundali Reading",
+  "Marriage Pujas",
+  "Graha Dosha Remedies",
+];
 
 const Footer = () => {
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
     <footer className="bg-primary relative overflow-hidden">
+      {/* Gold accent line */}
       <div className="h-1 bg-gradient-to-r from-secondary/0 via-secondary to-secondary/0" />
 
-      {/* Background decoration — hidden on mobile for perf */}
-      <div className="absolute inset-0 opacity-5 hidden sm:block">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-[0.03] hidden sm:block pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[300px] select-none">🕉️</div>
       </div>
 
-      <div className="container relative z-10 py-12 sm:py-16 px-4">
-        <div className="grid gap-8 sm:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="sm:col-span-2">
+      <div className="container relative z-10 px-4">
+        {/* Main footer content */}
+        <div className="py-12 sm:py-16 grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-12">
+          {/* Brand */}
+          <div className="lg:col-span-4">
             <h3 className="font-heading text-xl sm:text-2xl font-bold text-secondary flex items-center gap-2">
               🕉️ Priest Seva
             </h3>
-            <p className="mt-3 sm:mt-4 text-sm text-primary-foreground/70 leading-relaxed max-w-md">
-              Authentic Vedic rituals with 30+ years of trusted experience.
-              Serving devotees with devotion, precision, and personalized spiritual guidance
-              for all of life's sacred moments.
+            <p className="mt-3 text-sm text-primary-foreground/70 leading-relaxed max-w-sm">
+              Authentic Vedic rituals with 30+ years of trusted experience. Serving devotees with devotion, precision, and personalized spiritual guidance.
             </p>
-            <div className="mt-4 sm:mt-6 flex items-center gap-2 text-primary-foreground/50 text-xs">
-              <MapPin className="h-3.5 w-3.5 flex-shrink-0" />
-              <span>Available across Telangana & Andhra Pradesh</span>
+            <div className="mt-5 space-y-2.5">
+              <a href="tel:8897319822" className="flex items-center gap-2.5 text-sm text-primary-foreground/80 hover:text-secondary transition-colors group">
+                <Phone className="h-4 w-4 text-secondary flex-shrink-0" />
+                <span className="font-semibold">88973 19822</span>
+              </a>
+              <div className="flex items-center gap-2.5 text-sm text-primary-foreground/60">
+                <MapPin className="h-4 w-4 text-secondary/70 flex-shrink-0" />
+                <span>Telangana & Andhra Pradesh</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-sm text-primary-foreground/60">
+                <Clock className="h-4 w-4 text-secondary/70 flex-shrink-0" />
+                <span>Respond within 2 hours</span>
+              </div>
             </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold text-primary-foreground mb-3 sm:mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
-            <div className="flex flex-col gap-2 sm:gap-3">
-              {[
-                { to: "/", label: "Home" },
-                { to: "/about", label: "About" },
-                { to: "/services", label: "Services" },
-                { to: "/contact", label: "Contact" },
-              ].map(({ to, label }) => (
+          {/* Quick Links */}
+          <div className="lg:col-span-2">
+            <h4 className="font-semibold text-primary-foreground text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+            <div className="flex flex-col gap-2.5">
+              {footerLinks.map(({ to, label }) => (
                 <Link
                   key={to}
                   to={to}
-                  className="text-sm text-primary-foreground/60 hover:text-secondary transition-colors"
+                  className="text-sm text-primary-foreground/60 hover:text-secondary transition-colors w-fit"
                 >
                   {label}
                 </Link>
@@ -48,32 +72,54 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold text-primary-foreground mb-3 sm:mb-4 text-sm uppercase tracking-wider">Contact</h4>
-            <div className="space-y-3">
-              <a href="tel:8897319822" className="flex items-center gap-3 text-sm text-primary-foreground/60 hover:text-secondary transition-colors group">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-foreground/10 group-hover:bg-secondary/20 transition-colors flex-shrink-0">
-                  <Phone className="h-3.5 w-3.5" />
-                </div>
-                88973 19822
-              </a>
-              <a href="tel:9676956436" className="flex items-center gap-3 text-sm text-primary-foreground/60 hover:text-secondary transition-colors group">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-foreground/10 group-hover:bg-secondary/20 transition-colors flex-shrink-0">
-                  <Phone className="h-3.5 w-3.5" />
-                </div>
-                96769 56436
-              </a>
+          {/* Services */}
+          <div className="lg:col-span-3">
+            <h4 className="font-semibold text-primary-foreground text-sm uppercase tracking-wider mb-4">Our Services</h4>
+            <div className="flex flex-col gap-2.5">
+              {servicesList.map((s) => (
+                <Link
+                  key={s}
+                  to="/services"
+                  className="text-sm text-primary-foreground/60 hover:text-secondary transition-colors w-fit"
+                >
+                  {s}
+                </Link>
+              ))}
             </div>
+          </div>
+
+          {/* CTA */}
+          <div className="lg:col-span-3">
+            <h4 className="font-semibold text-primary-foreground text-sm uppercase tracking-wider mb-4">Book a Puja</h4>
+            <p className="text-sm text-primary-foreground/60 leading-relaxed mb-4">
+              Ready to experience authentic Vedic rituals? Book your puja today.
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-xl bg-secondary text-secondary-foreground px-5 py-2.5 text-sm font-bold shadow-md hover:bg-secondary/90 transition-all"
+            >
+              Book Now
+            </a>
           </div>
         </div>
 
-        <div className="mt-10 sm:mt-12 border-t border-primary-foreground/10 pt-5 sm:pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        {/* Bottom bar */}
+        <div className="border-t border-primary-foreground/10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-primary-foreground/40">
             © {new Date().getFullYear()} Priest Seva. All rights reserved.
           </p>
-          <p className="text-xs text-primary-foreground/30">
-            🙏 Serving with devotion since 1994
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-xs text-primary-foreground/30">
+              🙏 Serving with devotion since 1994
+            </p>
+            <button
+              onClick={scrollToTop}
+              aria-label="Back to top"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-secondary/20 transition-colors"
+            >
+              <ArrowUp className="h-3.5 w-3.5 text-primary-foreground/60" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>

@@ -220,19 +220,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <span className="font-bold text-foreground text-base sm:text-lg">88973 19822</span>
-                    <p className="text-xs text-muted-foreground">Primary Number</p>
-                  </div>
-                </a>
-                <a
-                  href="tel:9676956436"
-                  className="flex items-center gap-3 sm:gap-4 rounded-xl border border-border bg-background p-4 sm:p-5 transition-all duration-300 hover:border-secondary hover:shadow-md group"
-                >
-                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-secondary/10 group-hover:bg-secondary/20 transition-colors flex-shrink-0">
-                    <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-secondary" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-foreground text-base sm:text-lg">96769 56436</span>
-                    <p className="text-xs text-muted-foreground">Alternative Number</p>
+                    <p className="text-xs text-muted-foreground">Call us anytime</p>
                   </div>
                 </a>
               </div>
