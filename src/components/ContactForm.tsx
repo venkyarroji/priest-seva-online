@@ -43,18 +43,36 @@ const ContactForm = () => {
 
   const onSubmit = async (data: ContactFormValues) => {
     setLoading(true);
-    try {
-      const { error } = await supabase.from("inquiries").insert({
-        name: data.name,
-        phone: data.phone,
-        service: data.service || null,
-        message: data.message || null,
-      });
 
-      if (error) {
-        console.error("Supabase insert error:", error);
-        throw error;
+    const payload = {
+      name: data.name,
+      phone: data.phone,
+      service: data.service || null,
+      message: data.message || null,
+    };
+
+    const isNetworkError = (err: unknown) => {
+      const message = err instanceof Error ? err.message : String(err ?? "");
+      return message.toLowerCase().includes("failed to fetch");
+    };
+
+    try {
+      let lastError: unknown = null;
+
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        try {
+          const { error } = await supabase.from("inquiries").insert(payload);
+          if (error) throw error;
+          lastError = null;
+          break;
+        } catch (err) {
+          lastError = err;
+          if (!isNetworkError(err) || attempt === 2) throw err;
+          await new Promise((resolve) => setTimeout(resolve, 700));
+        }
       }
+
+      if (lastError) throw lastError;
 
       toast({
         title: "🙏 Booking Registered Successfully!",
@@ -64,9 +82,12 @@ const ContactForm = () => {
       form.reset();
     } catch (err) {
       console.error("Form submission error:", err);
+      const networkIssue = isNetworkError(err);
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again or call us directly.",
+        title: networkIssue ? "Network issue while sending" : "Error",
+        description: networkIssue
+          ? "Connection dropped while saving your booking. Please retry once or call us directly at 88973 19822."
+          : "Something went wrong. Please try again or call us directly.",
         variant: "destructive",
       });
     } finally {
