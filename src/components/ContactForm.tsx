@@ -32,6 +32,7 @@ const services = [
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<ContactFormValues>({
@@ -52,9 +53,10 @@ const ContactForm = () => {
       if (error) throw error;
 
       toast({
-        title: "🙏 Inquiry Submitted",
-        description: "We will contact you shortly. Har Har Mahadev!",
+        title: "🙏 Booking Registered Successfully!",
+        description: "Your entry is filed. Priest Seva will connect with you soon!",
       });
+      setSubmitted(true);
       form.reset();
     } catch {
       toast({
@@ -87,6 +89,25 @@ const ContactForm = () => {
           {/* Form — takes 3 cols */}
           <div className="lg:col-span-3">
             <div className="rounded-2xl border border-border bg-background p-8 shadow-lg">
+              {submitted ? (
+                <div className="text-center py-12 space-y-4">
+                  <div className="mx-auto w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                    <span className="text-3xl">🙏</span>
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-foreground">Booking Registered!</h3>
+                  <p className="text-muted-foreground text-base max-w-md mx-auto">
+                    Your entry has been filed successfully. <strong>Priest Seva</strong> will connect with you soon.
+                  </p>
+                  <p className="text-sm text-secondary font-semibold">Har Har Mahadev! 🙏</p>
+                  <Button
+                    onClick={() => setSubmitted(false)}
+                    variant="outline"
+                    className="mt-4 rounded-xl"
+                  >
+                    Book Another Puja
+                  </Button>
+                </div>
+              ) : (
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                   <div className="grid gap-5 sm:grid-cols-2">
@@ -159,10 +180,11 @@ const ContactForm = () => {
                     size="lg"
                   >
                     <Send className="mr-2 h-4 w-4" />
-                    {loading ? "Submitting..." : "Submit Inquiry"}
+                    {loading ? "Submitting..." : "Book Now"}
                   </Button>
                 </form>
               </Form>
+              )}
             </div>
           </div>
 
