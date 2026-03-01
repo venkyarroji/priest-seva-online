@@ -53,7 +53,9 @@ export default {
         },
         "maroon-dark": "hsl(var(--maroon-dark))",
         gold: "hsl(var(--gold))",
+        "gold-light": "hsl(var(--gold-light))",
         cream: "hsl(var(--cream))",
+        "cream-dark": "hsl(var(--cream-dark))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
