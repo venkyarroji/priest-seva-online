@@ -51,7 +51,10 @@ const ContactForm = () => {
         message: data.message || null,
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error("Supabase insert error:", error);
+        throw error;
+      }
 
       toast({
         title: "🙏 Booking Registered Successfully!",
@@ -59,10 +62,11 @@ const ContactForm = () => {
       });
       setSubmitted(true);
       form.reset();
-    } catch {
+    } catch (err) {
+      console.error("Form submission error:", err);
       toast({
         title: "Error",
-        description: "Something went wrong. Please call us directly.",
+        description: "Something went wrong. Please try again or call us directly.",
         variant: "destructive",
       });
     } finally {
