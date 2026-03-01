@@ -19,7 +19,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -27,17 +27,17 @@ const Navbar = () => {
     <nav className={cn(
       "sticky top-0 z-50 transition-all duration-300",
       scrolled
-        ? "border-b border-border/50 bg-background/95 backdrop-blur shadow-sm supports-[backdrop-filter]:bg-background/85"
+        ? "border-b border-border/50 bg-background/95 backdrop-blur-md shadow-sm"
         : "bg-transparent"
     )}>
-      <div className="container flex h-18 items-center justify-between py-4">
-        <Link to="/" className="font-heading text-2xl font-bold text-primary flex items-center gap-2">
-          <span className="text-secondary text-3xl">🕉️</span>
+      <div className="container flex h-16 items-center justify-between">
+        <Link to="/" className="font-heading text-xl sm:text-2xl font-bold text-primary flex items-center gap-2">
+          <span className="text-secondary text-2xl sm:text-3xl">🕉️</span>
           <span>Priest Seva</span>
         </Link>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:gap-8 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -67,18 +67,18 @@ const Navbar = () => {
               <span className="sr-only">Open menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-background border-l-2 border-secondary/20">
-            <SheetTitle className="font-heading text-2xl text-primary flex items-center gap-2">
+          <SheetContent side="right" className="bg-background border-l-2 border-secondary/20 w-[280px]">
+            <SheetTitle className="font-heading text-xl text-primary flex items-center gap-2">
               <span className="text-secondary">🕉️</span> Priest Seva
             </SheetTitle>
-            <div className="mt-10 flex flex-col gap-6">
+            <div className="mt-8 flex flex-col gap-5">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "text-lg font-medium transition-colors hover:text-primary border-b border-border/30 pb-3",
+                    "text-base font-medium transition-colors hover:text-primary border-b border-border/30 pb-3",
                     location.pathname === link.href ? "text-primary" : "text-foreground/70"
                   )}
                 >

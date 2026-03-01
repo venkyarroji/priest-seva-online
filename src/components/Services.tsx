@@ -19,31 +19,29 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-card relative">
+    <section id="services" className="py-16 sm:py-24 bg-card relative">
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary/40 to-transparent" />
 
-      <div className="container">
-        <div className="mx-auto max-w-2xl text-center mb-16">
+      <div className="container px-4">
+        <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">Our Services</p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-foreground md:text-5xl">
+          <h2 className="mt-3 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-5xl">
             Sacred Vedic Rituals
           </h2>
           <div className="section-divider mt-4" />
-          <p className="mt-6 text-muted-foreground text-base max-w-lg mx-auto">
+          <p className="mt-4 sm:mt-6 text-muted-foreground text-sm sm:text-base max-w-lg mx-auto">
             Authentic pujas and spiritual services performed with decades of experience, devotion, and scriptural precision.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {services.map(({ icon: Icon, title, description, image }, index) => (
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {services.map(({ icon: Icon, title, description, image }) => (
             <div
               key={title}
-              className={`group relative rounded-2xl border border-border bg-background overflow-hidden transition-all duration-300 hover:border-secondary hover:shadow-xl hover:shadow-secondary/10 hover:-translate-y-1 ${
-                index === services.length - 1 && services.length % 2 !== 0 ? "sm:col-span-2 lg:col-span-1" : ""
-              }`}
+              className="group relative rounded-2xl border border-border bg-background overflow-hidden transition-all duration-300 hover:border-secondary hover:shadow-xl hover:shadow-secondary/10 hover:-translate-y-1"
             >
               {/* Image */}
-              <div className="relative h-44 overflow-hidden">
+              <div className="relative h-40 sm:h-44 overflow-hidden">
                 <img
                   src={image}
                   alt={title}
@@ -51,15 +49,15 @@ const Services = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-                <div className="absolute top-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl bg-background/80 backdrop-blur-sm border border-border">
-                  <Icon className="h-5 w-5 text-secondary" />
+                <div className="absolute top-3 left-3 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-background/80 backdrop-blur-sm border border-border">
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-secondary" />
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-5 space-y-2">
-                <h3 className="font-heading text-lg font-bold text-foreground">{title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+              <div className="p-4 sm:p-5 space-y-2">
+                <h3 className="font-heading text-base sm:text-lg font-bold text-foreground">{title}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </div>
           ))}
