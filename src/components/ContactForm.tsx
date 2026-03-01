@@ -1,4 +1,5 @@
 import { useState } from "react";
+import whatsappQr from "@/assets/whatsapp-qr.jpeg";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -90,15 +91,28 @@ const ContactForm = () => {
           <div className="lg:col-span-3">
             <div className="rounded-2xl border border-border bg-background p-8 shadow-lg">
               {submitted ? (
-                <div className="text-center py-12 space-y-4">
-                  <div className="mx-auto w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                <div className="text-center py-8 space-y-5">
+                  <div className="mx-auto w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center">
                     <span className="text-3xl">🙏</span>
                   </div>
                   <h3 className="font-heading text-2xl font-bold text-foreground">Booking Registered!</h3>
                   <p className="text-muted-foreground text-base max-w-md mx-auto">
-                    Your entry has been filed successfully. <strong>Priest Seva</strong> will connect with you soon.
+                    Your entry has been filed successfully. <strong className="text-foreground">Priest Seva</strong> will connect with you soon.
                   </p>
                   <p className="text-sm text-secondary font-semibold">Har Har Mahadev! 🙏</p>
+
+                  {/* WhatsApp Community QR */}
+                  <div className="mt-6 pt-6 border-t border-border">
+                    <p className="text-muted-foreground text-sm mb-1">✨ Join our spiritual community ✨</p>
+                    <p className="font-heading text-lg font-bold text-foreground mb-4">
+                      "Together we walk the path of devotion"
+                    </p>
+                    <div className="mx-auto w-48 h-48 rounded-2xl overflow-hidden border-2 border-secondary/30 shadow-lg shadow-secondary/10">
+                      <img src={whatsappQr} alt="Join Priest Seva WhatsApp Group" className="w-full h-full object-cover" />
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-3">Scan to join our WhatsApp community</p>
+                  </div>
+
                   <Button
                     onClick={() => setSubmitted(false)}
                     variant="outline"
