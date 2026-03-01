@@ -6,11 +6,11 @@ import problemFamily from "@/assets/problem-family.png";
 import problemNegative from "@/assets/problem-negative.png";
 
 const problems = [
-  { icon: DollarSign, label: "Financial Problems", desc: "Overcome financial obstacles through powerful Vedic remedies and Lakshmi pujas for prosperity.", image: problemFinancial },
-  { icon: Heart, label: "Marriage Delay", desc: "Astrological solutions and sacred rituals to remove obstacles in finding your life partner.", image: problemMarriage },
-  { icon: Activity, label: "Health Issues", desc: "Spiritual healing through ancient mantras and rituals for chronic health concerns.", image: problemHealth },
-  { icon: Users, label: "Family Disputes", desc: "Restore harmony, peace, and love in your household through sacred Vedic practices.", image: problemFamily },
-  { icon: ShieldAlert, label: "Negative Energies", desc: "Powerful protection rituals against evil eye, black magic, and negative influences.", image: problemNegative },
+  { icon: DollarSign, label: "Financial Obstacles", desc: "Overcome monetary challenges through powerful Lakshmi Pujas, Kubera Homas, and time-tested Vedic remedies for lasting prosperity.", image: problemFinancial },
+  { icon: Heart, label: "Delayed Marriage", desc: "Remove astrological obstacles to marriage through sacred rituals, Mangal Dosha remedies, and personalised planetary solutions.", image: problemMarriage },
+  { icon: Activity, label: "Health & Well-being", desc: "Restore vitality through Mrityunjaya Japa, Ayush Homam, and ancient mantras for chronic health concerns and mental peace.", image: problemHealth },
+  { icon: Users, label: "Family Discord", desc: "Rekindle harmony and understanding in your household through Shanti Pujas, Vastu corrections, and spiritual counselling.", image: problemFamily },
+  { icon: ShieldAlert, label: "Negative Energies & Drishti", desc: "Powerful Sudarshana Homam, Nazar Dosh Nivaran, and protection rituals against evil eye and negative influences.", image: problemNegative },
 ];
 
 const ProblemCard = ({ icon: Icon, label, desc, image, large = false }: {
@@ -24,7 +24,7 @@ const ProblemCard = ({ icon: Icon, label, desc, image, large = false }: {
     <div className={`relative overflow-hidden ${large ? "h-48 sm:h-56" : "h-44 sm:h-48"}`}>
       <img
         src={image}
-        alt={label}
+        alt={`Vedic remedy for ${label}`}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         loading="lazy"
       />
@@ -45,7 +45,7 @@ const ProblemCard = ({ icon: Icon, label, desc, image, large = false }: {
         href="#contact"
         className="mt-2 sm:mt-3 inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-secondary transition-colors hover:text-secondary/80"
       >
-        Get Remedy <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+        Consult Now <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
       </a>
     </div>
   </div>
@@ -54,7 +54,6 @@ const ProblemCard = ({ icon: Icon, label, desc, image, large = false }: {
 const Problems = () => {
   return (
     <section className="py-16 sm:py-24 bg-primary relative overflow-hidden">
-      {/* Decorative background */}
       <div className="absolute inset-0 opacity-[0.03] hidden sm:block">
         <div className="absolute top-10 left-10 text-[200px] font-heading select-none">🕉️</div>
         <div className="absolute bottom-10 right-10 text-[150px] font-heading select-none rotate-12">☸</div>
@@ -64,25 +63,23 @@ const Problems = () => {
       <div className="container relative z-10 px-4">
         <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">
-            Spiritual Guidance
+            Spiritual Solutions
           </p>
           <h2 className="mt-3 font-heading text-2xl font-bold text-primary-foreground sm:text-3xl md:text-5xl">
-            Problems We Help Solve
+            Life Challenges We Address
           </h2>
           <div className="section-divider mt-4" />
           <p className="mt-4 sm:mt-6 text-primary-foreground/70 text-sm sm:text-base max-w-lg mx-auto">
-            Through authentic Vedic rituals, mantras, and personalized guidance, we provide time-tested remedies for life's challenges.
+            Through authentic Vedic rituals, sacred mantras, and personalised astrological guidance, we provide proven remedies for life's deepest challenges.
           </p>
         </div>
 
-        {/* Top row — 2 large cards */}
         <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 mb-4 sm:mb-6">
           {problems.slice(0, 2).map((p) => (
             <ProblemCard key={p.label} {...p} large />
           ))}
         </div>
 
-        {/* Bottom row — 3 cards */}
         <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {problems.slice(2).map((p) => (
             <ProblemCard key={p.label} {...p} />

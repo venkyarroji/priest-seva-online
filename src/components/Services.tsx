@@ -8,13 +8,13 @@ import serviceGraha from "@/assets/service-graha.png";
 import serviceAllpuja from "@/assets/service-allpuja.png";
 
 const services = [
-  { icon: Sun, title: "Navagraha Pooja", description: "Appease the nine planetary deities for prosperity and well-being in your life.", image: serviceNavagraha },
-  { icon: Shield, title: "Sarpa Dosha Shanti", description: "Remedial rituals to nullify the effects of Sarpa Dosha in your horoscope.", image: serviceSarpa },
-  { icon: BookOpen, title: "Kundali Reading", description: "Detailed horoscope analysis and personalized spiritual guidance for your future.", image: serviceKundali },
-  { icon: Heart, title: "Marriage Pujas", description: "Complete Vedic marriage ceremonies performed with traditional sacred rituals.", image: serviceMarriage },
-  { icon: Baby, title: "Santan Pujas", description: "Sacred rituals for blessings of progeny and child well-being and happiness.", image: serviceSantan },
-  { icon: Star, title: "Graha Dosha Remedies", description: "Effective remedies for planetary doshas and negative influences in your life.", image: serviceGraha },
-  { icon: Sparkles, title: "All Types of Pujas", description: "Griha Pravesh, Satyanarayan Katha, and all traditional Vedic ceremonies.", image: serviceAllpuja },
+  { icon: Sun, title: "Navagraha Pooja", description: "Invoke the blessings of the nine celestial deities to bring harmony, success, and protection into your life.", image: serviceNavagraha },
+  { icon: Shield, title: "Sarpa Dosha Shanti", description: "Authentic Vedic remedies to neutralise Sarpa Dosha effects and restore peace and prosperity to your family.", image: serviceSarpa },
+  { icon: BookOpen, title: "Kundali Reading & Analysis", description: "Comprehensive horoscope analysis with personalised spiritual guidance for career, marriage, and well-being.", image: serviceKundali },
+  { icon: Heart, title: "Vedic Marriage Ceremonies", description: "Complete traditional wedding rituals — from Ganesh Puja to Saptapadi — performed with sacred precision.", image: serviceMarriage },
+  { icon: Baby, title: "Santan Puja & Child Blessings", description: "Sacred rituals for the blessing of progeny, safe delivery, and lifelong well-being of your children.", image: serviceSantan },
+  { icon: Star, title: "Graha Dosha Remedies", description: "Targeted planetary remedies including Shanti Pujas and Homas to mitigate adverse astrological influences.", image: serviceGraha },
+  { icon: Sparkles, title: "All Traditional Vedic Pujas", description: "Griha Pravesh, Satyanarayan Katha, Vastu Shanti, Rudrabhishekam, and every sacred ceremony your family needs.", image: serviceAllpuja },
 ];
 
 const Services = () => {
@@ -24,13 +24,13 @@ const Services = () => {
 
       <div className="container px-4">
         <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">Our Services</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">Our Sacred Services</p>
           <h2 className="mt-3 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-5xl">
-            Sacred Vedic Rituals
+            Authentic Vedic Rituals
           </h2>
           <div className="section-divider mt-4" />
           <p className="mt-4 sm:mt-6 text-muted-foreground text-sm sm:text-base max-w-lg mx-auto">
-            Authentic pujas and spiritual services performed with decades of experience, devotion, and scriptural precision.
+            Every puja is performed with scriptural precision, heartfelt devotion, and transparent guidance — backed by 30+ years of trusted practice.
           </p>
         </div>
 
@@ -40,11 +40,10 @@ const Services = () => {
               key={title}
               className="group relative rounded-2xl border border-border bg-background overflow-hidden transition-all duration-300 hover:border-secondary hover:shadow-xl hover:shadow-secondary/10 hover:-translate-y-1"
             >
-              {/* Image */}
               <div className="relative h-40 sm:h-44 overflow-hidden">
                 <img
                   src={image}
-                  alt={title}
+                  alt={`${title} — Vedic ritual performed by Priest Seva`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
@@ -54,7 +53,6 @@ const Services = () => {
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-4 sm:p-5 space-y-2">
                 <h3 className="font-heading text-base sm:text-lg font-bold text-foreground">{title}</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{description}</p>
