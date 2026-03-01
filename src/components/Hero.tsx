@@ -1,21 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Star } from "lucide-react";
+import pujaCeremony1 from "@/assets/puja-ceremony-1.png";
 
 const Hero = () => {
   return (
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-maroon-dark">
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/80 to-maroon-dark/95" />
-
-      {/* Decorative pattern */}
-      <div className="absolute inset-0 opacity-10" style={{
-        backgroundImage: `radial-gradient(circle at 25% 25%, hsl(43 64% 52% / 0.3) 0%, transparent 50%),
-                          radial-gradient(circle at 75% 75%, hsl(43 64% 52% / 0.2) 0%, transparent 50%)`
-      }} />
+      {/* Background image */}
+      <img
+        src={pujaCeremony1}
+        alt="Vedic puja ceremony with traditional mandala and offerings"
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/85 to-maroon-dark/95" />
 
       <div className="container relative z-10 text-center">
         <div className="mx-auto max-w-3xl space-y-6">
-          {/* Om symbol */}
           <p className="text-5xl">🕉️</p>
 
           <h1 className="font-heading text-5xl font-bold tracking-tight text-primary-foreground md:text-7xl">
@@ -30,7 +31,6 @@ const Hero = () => {
             Yerroju Srinivasa Charyulu Garu
           </p>
 
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-5 py-2">
             <Star className="h-4 w-4 fill-secondary text-secondary" />
             <span className="text-sm font-medium text-primary-foreground">
