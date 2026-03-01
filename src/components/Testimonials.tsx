@@ -7,21 +7,21 @@ const testimonials = [
   {
     name: "Ramesh Kumar",
     location: "Hyderabad",
-    review: "Pandit ji performed Navagraha Pooja at our home with great devotion. The entire family felt blessed. Highly recommended for anyone seeking authentic Vedic rituals.",
+    review: "Pandit ji performed Navagraha Pooja at our home with exceptional devotion and precision. Every mantra was recited perfectly, and the entire family felt truly blessed. We highly recommend Priest Seva to anyone seeking authentic Vedic rituals.",
     rating: 5,
     image: pujaCeremony2,
   },
   {
     name: "Sunita Devi",
     location: "Mancherial",
-    review: "We consulted for Sarpa Dosha Shanti and the remedies were very effective. His knowledge of scriptures and mantras is truly remarkable. Very satisfied.",
+    review: "We consulted Pandit ji for Sarpa Dosha Shanti, and the remedies brought remarkable peace to our family. His deep knowledge of the scriptures and compassionate guidance made all the difference. Truly grateful.",
     rating: 5,
     image: pujaCeremony3,
   },
   {
     name: "Venkat Rao",
     location: "Warangal",
-    review: "Our son's marriage puja was conducted beautifully. Every ritual was explained clearly to the family. A truly knowledgeable and humble priest.",
+    review: "Our son's wedding was conducted beautifully — every ritual was explained to the family with patience and care. Pandit ji's warmth and expertise made our celebration truly memorable. A genuinely humble and knowledgeable priest.",
     rating: 5,
     image: pujaCeremony4,
   },
@@ -34,19 +34,21 @@ const Testimonials = () => {
         <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-secondary">Testimonials</p>
           <h2 className="mt-3 font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-5xl">
-            What Devotees Say
+            Voices of Our Devotees
           </h2>
           <div className="section-divider mt-4" />
+          <p className="mt-4 sm:mt-6 text-muted-foreground text-sm sm:text-base max-w-lg mx-auto">
+            Hear from families who have experienced the power of authentic Vedic rituals with Priest Seva.
+          </p>
         </div>
 
         <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
             <div key={t.name} className="group rounded-2xl bg-card border border-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              {/* Image */}
               <div className="aspect-[4/3] overflow-hidden relative">
                 <img
                   src={t.image}
-                  alt={`Puja ceremony for ${t.name}`}
+                  alt={`Vedic puja ceremony for ${t.name}'s family`}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
