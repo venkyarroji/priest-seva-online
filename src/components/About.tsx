@@ -1,4 +1,6 @@
 import { Award, BookOpen, Home, Users } from "lucide-react";
+import priestPortrait from "@/assets/priest-portrait.jpg";
+import certificate from "@/assets/certificate.png";
 
 const highlights = [
   { icon: Award, label: "30+ Years Experience" },
@@ -12,16 +14,16 @@ const About = () => {
     <section id="about" className="py-20">
       <div className="container">
         <div className="grid gap-12 md:grid-cols-2 items-center">
-          {/* Image placeholder */}
+          {/* Priest image */}
           <div className="relative">
-            <div className="aspect-[3/4] rounded-lg bg-muted flex items-center justify-center border-2 border-border overflow-hidden">
-              <div className="text-center p-8 space-y-4">
-                <p className="text-6xl">🙏</p>
-                <p className="font-heading text-xl text-primary font-semibold">Priest Photo</p>
-                <p className="text-sm text-muted-foreground">Upload your image to replace this placeholder</p>
-              </div>
+            <div className="aspect-[3/4] rounded-lg overflow-hidden border-2 border-border">
+              <img
+                src={priestPortrait}
+                alt="Yerroju Srinivasa Charyulu Garu - Vedic Priest with 30+ years experience"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
             </div>
-            {/* Decorative border */}
             <div className="absolute -bottom-3 -right-3 h-full w-full rounded-lg border-2 border-secondary/30 -z-10" />
           </div>
 
@@ -41,6 +43,16 @@ const About = () => {
               Whether it's Navagraha Pooja, marriage ceremonies, or resolving doshas,
               he provides personalized spiritual guidance and home puja services across the region.
             </p>
+
+            {/* Certificate */}
+            <div className="rounded-lg overflow-hidden border border-border">
+              <img
+                src={certificate}
+                alt="Vedic priest certification and recognition"
+                className="w-full object-cover"
+                loading="lazy"
+              />
+            </div>
 
             {/* Highlights grid */}
             <div className="grid grid-cols-2 gap-4 pt-4">
