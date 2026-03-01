@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import Chatbot from "@/components/Chatbot";
 import StickyCallButton from "@/components/StickyCallButton";
 import Index from "./pages/Index";
 import AboutPage from "./pages/AboutPage";
@@ -30,7 +30,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
-        <WhatsAppButton />
+        <Chatbot />
         <StickyCallButton />
       </BrowserRouter>
     </TooltipProvider>
