@@ -51,28 +51,41 @@ const ContactForm = () => {
       message: data.message || null,
     };
 
+    const getErrorMessage = (err: unknown) => {
+      if (err instanceof Error) return err.message;
+      if (typeof err === "object" && err !== null && "message" in err) {
+        return String((err as { message?: unknown }).message ?? "");
+      }
+      return String(err ?? "");
+    };
+
     const isNetworkError = (err: unknown) => {
-      const message = err instanceof Error ? err.message : String(err ?? "");
-      return message.toLowerCase().includes("failed to fetch");
+      const message = getErrorMessage(err).toLowerCase();
+      return (
+        message.includes("failed to fetch") ||
+        message.includes("network") ||
+        message.includes("load failed")
+      );
     };
 
     try {
+      let inserted = false;
       let lastError: unknown = null;
 
-      for (let attempt = 1; attempt <= 2; attempt++) {
+      for (let attempt = 1; attempt <= 3; attempt++) {
         try {
           const { error } = await supabase.from("inquiries").insert(payload);
           if (error) throw error;
-          lastError = null;
+          inserted = true;
           break;
         } catch (err) {
           lastError = err;
-          if (!isNetworkError(err) || attempt === 2) throw err;
-          await new Promise((resolve) => setTimeout(resolve, 700));
+          if (!isNetworkError(err) || attempt === 3) throw err;
+          await new Promise((resolve) => setTimeout(resolve, 600 * attempt));
         }
       }
 
-      if (lastError) throw lastError;
+      if (!inserted && lastError) throw lastError;
 
       toast({
         title: "🙏 Booking Registered Successfully!",
@@ -81,12 +94,17 @@ const ContactForm = () => {
       setSubmitted(true);
       form.reset();
     } catch (err) {
-      console.error("Form submission error:", err);
+      console.error("Form submission error:", {
+        error: err,
+        message: getErrorMessage(err),
+        online: navigator.onLine,
+      });
+
       const networkIssue = isNetworkError(err);
       toast({
         title: networkIssue ? "Network issue while sending" : "Error",
         description: networkIssue
-          ? "Connection dropped while saving your booking. Please retry once or call us directly at 88973 19822."
+          ? "Temporary network issue detected. Please retry once now; your backend is active."
           : "Something went wrong. Please try again or call us directly.",
         variant: "destructive",
       });
