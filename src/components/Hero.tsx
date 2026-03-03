@@ -57,7 +57,7 @@ const Hero = () => {
               asChild
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-2 border-cream/30 text-cream hover:bg-cream/10 px-8 py-5 sm:px-10 sm:py-6 text-sm sm:text-base backdrop-blur-sm transition-all hover:-translate-y-0.5"
+              className="w-full sm:w-auto border-2 border-secondary bg-secondary/20 text-cream hover:bg-secondary/40 px-8 py-5 sm:px-10 sm:py-6 text-sm sm:text-base backdrop-blur-sm transition-all hover:-translate-y-0.5"
             >
               <a href="tel:8897319822">
                 <Phone className="mr-2 h-4 w-4" /> Speak with Pandit Ji
