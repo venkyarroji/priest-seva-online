@@ -51,7 +51,7 @@ const Hero = () => {
               size="lg"
               className="w-full sm:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold px-8 py-5 sm:px-10 sm:py-6 text-sm sm:text-base shadow-lg shadow-secondary/25 transition-all hover:shadow-xl hover:shadow-secondary/30 hover:-translate-y-0.5"
             >
-              <a href="#contact">Book Your Puja Today</a>
+              <a href="#contact">Book Appointment</a>
             </Button>
             <Button
               asChild
