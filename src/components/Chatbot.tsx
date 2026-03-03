@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
-
-const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/spiritual-chat`;
+import { supabase } from "@/integrations/supabase/client";
 
 const quickReplies = [
   "🙏 Book Appointment",
@@ -50,101 +49,27 @@ const Chatbot = () => {
     }
   }, [isOpen]);
 
-  const streamChat = useCallback(
+  const callChat = useCallback(
     async (allMessages: Message[]) => {
-      const resp = await fetch(CHAT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({
+      const { data, error } = await supabase.functions.invoke("spiritual-chat", {
+        body: {
           messages: allMessages.map((m) => ({ role: m.role, content: m.content })),
-        }),
+        },
       });
 
-      if (!resp.ok || !resp.body) {
-        const errData = await resp.json().catch(() => ({}));
-        throw new Error(errData.error || "Failed to connect");
+      if (error) {
+        throw new Error(error.message || "Failed to connect");
       }
 
-      const reader = resp.body.getReader();
-      const decoder = new TextDecoder();
-      let textBuffer = "";
-      let assistantSoFar = "";
-      let streamDone = false;
-
-      while (!streamDone) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        textBuffer += decoder.decode(value, { stream: true });
-
-        let newlineIndex: number;
-        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
-          let line = textBuffer.slice(0, newlineIndex);
-          textBuffer = textBuffer.slice(newlineIndex + 1);
-
-          if (line.endsWith("\r")) line = line.slice(0, -1);
-          if (line.startsWith(":") || line.trim() === "") continue;
-          if (!line.startsWith("data: ")) continue;
-
-          const jsonStr = line.slice(6).trim();
-          if (jsonStr === "[DONE]") {
-            streamDone = true;
-            break;
-          }
-
-          try {
-            const parsed = JSON.parse(jsonStr);
-            const content = parsed.choices?.[0]?.delta?.content as string | undefined;
-            if (content) {
-              assistantSoFar += content;
-              setMessages((prev) => {
-                const last = prev[prev.length - 1];
-                if (last?.role === "assistant" && last.id === -1) {
-                  return prev.map((m, i) =>
-                    i === prev.length - 1 ? { ...m, content: assistantSoFar } : m
-                  );
-                }
-                return [...prev, { id: -1, role: "assistant", content: assistantSoFar }];
-              });
-            }
-          } catch {
-            textBuffer = line + "\n" + textBuffer;
-            break;
-          }
-        }
+      const reply = data?.reply;
+      if (!reply) {
+        throw new Error("No response from AI");
       }
 
-      // Flush remaining buffer
-      if (textBuffer.trim()) {
-        for (let raw of textBuffer.split("\n")) {
-          if (!raw) continue;
-          if (raw.endsWith("\r")) raw = raw.slice(0, -1);
-          if (!raw.startsWith("data: ")) continue;
-          const jsonStr = raw.slice(6).trim();
-          if (jsonStr === "[DONE]") continue;
-          try {
-            const parsed = JSON.parse(jsonStr);
-            const content = parsed.choices?.[0]?.delta?.content as string | undefined;
-            if (content) {
-              assistantSoFar += content;
-              setMessages((prev) =>
-                prev.map((m, i) =>
-                  i === prev.length - 1 ? { ...m, content: assistantSoFar } : m
-                )
-              );
-            }
-          } catch {
-            /* ignore */
-          }
-        }
-      }
-
-      // Finalize: give the assistant message a real id
-      setMessages((prev) =>
-        prev.map((m) => (m.id === -1 ? { ...m, id: Date.now() } : m))
-      );
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now(), role: "assistant", content: reply },
+      ]);
     },
     []
   );
@@ -159,7 +84,7 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      await streamChat(updated);
+      await callChat(updated);
     } catch (e) {
       console.error("Chat error:", e);
       setMessages((prev) => [
