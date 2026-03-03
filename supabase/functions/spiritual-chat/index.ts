@@ -88,7 +88,7 @@ serve(async (req) => {
           { role: "system", content: SYSTEM_PROMPT },
           ...messages,
         ],
-        stream: true,
+        stream: false,
         max_tokens: 800,
         temperature: 0.7,
       }),
@@ -111,8 +111,11 @@ serve(async (req) => {
       });
     }
 
-    return new Response(response.body, {
-      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || "🙏 I could not generate a response. Please try again.";
+
+    return new Response(JSON.stringify({ reply }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
     console.error("spiritual-chat error:", e);
