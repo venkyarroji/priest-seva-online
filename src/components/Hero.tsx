@@ -24,7 +24,7 @@ const Hero = () => {
           </div>
 
           <h1 className="font-heading text-4xl font-black tracking-tight text-cream sm:text-5xl md:text-7xl lg:text-8xl drop-shadow-lg">
-            Priest Seva
+            Sri Laxmi Ganapathi Jyothishyalayam
           </h1>
 
           <div className="section-divider !w-20 sm:!w-24" />

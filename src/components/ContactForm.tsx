@@ -89,7 +89,7 @@ const ContactForm = () => {
 
       toast({
         title: "🙏 Booking Registered Successfully!",
-        description: "Your entry is filed. Priest Seva will connect with you soon!",
+        description: "Your entry is filed. Sri Laxmi Ganapathi Jyothishyalayam will connect with you soon!",
       });
       setSubmitted(true);
       form.reset();
@@ -140,7 +140,7 @@ const ContactForm = () => {
                   </div>
                   <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground">Booking Registered!</h3>
                   <p className="text-muted-foreground text-sm sm:text-base max-w-md mx-auto">
-                    Your entry has been filed successfully. <strong className="text-foreground">Priest Seva</strong> will connect with you soon.
+                    Your entry has been filed successfully. <strong className="text-foreground">Sri Laxmi Ganapathi Jyothishyalayam</strong> will connect with you soon.
                   </p>
                   <p className="text-sm text-secondary font-semibold">Har Har Mahadev! 🙏</p>
 
@@ -151,7 +151,7 @@ const ContactForm = () => {
                       "Together we walk the path of devotion"
                     </p>
                     <div className="mx-auto w-36 h-36 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border-2 border-secondary/30 shadow-lg shadow-secondary/10">
-                      <img src={whatsappQr} alt="Join Priest Seva WhatsApp Group" className="w-full h-full object-cover" />
+                      <img src={whatsappQr} alt="Join Sri Laxmi Ganapathi Jyothishyalayam WhatsApp Group" className="w-full h-full object-cover" />
                     </div>
                     <p className="text-xs text-muted-foreground mt-2 sm:mt-3">Scan to join our WhatsApp community</p>
                   </div>
