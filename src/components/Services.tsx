@@ -43,7 +43,7 @@ const Services = () => {
               <div className="relative h-40 sm:h-44 overflow-hidden">
                 <img
                   src={image}
-                  alt={`${title} — Vedic ritual performed by Priest Seva`}
+                  alt={`${title} — Vedic ritual performed by Sri Laxmi Ganapathi Jyothishyalayam`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />

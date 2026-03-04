@@ -39,7 +39,7 @@ const Navbar = () => {
           <span className="text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">🕉️</span>
           <div className="flex flex-col">
             <span className="font-heading text-lg sm:text-xl font-bold text-primary leading-tight tracking-wide">
-              Priest Seva
+              Sri Laxmi Ganapathi Jyothishyalayam
             </span>
             <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-secondary font-semibold leading-tight">
               Vedic Rituals & Guidance
@@ -86,7 +86,7 @@ const Navbar = () => {
             <SheetTitle className="font-heading text-xl text-primary flex items-center gap-2.5 pb-2 border-b border-border">
               <span className="text-2xl">🕉️</span>
               <div>
-                <span className="block">Priest Seva</span>
+                <span className="block">Sri Laxmi Ganapathi Jyothishyalayam</span>
                 <span className="text-[10px] uppercase tracking-[0.15em] text-secondary font-semibold block">Vedic Rituals & Guidance</span>
               </div>
             </SheetTitle>

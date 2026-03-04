@@ -32,7 +32,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-4">
             <h3 className="font-heading text-xl sm:text-2xl font-bold text-secondary flex items-center gap-2">
-              🕉️ Priest Seva
+              🕉️ Sri Laxmi Ganapathi Jyothishyalayam
             </h3>
             <p className="mt-3 text-sm text-primary-foreground/70 leading-relaxed max-w-sm">
               Authentic Vedic rituals performed with scriptural precision and heartfelt devotion. Trusted by 10,000+ families since 1994.
@@ -94,7 +94,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-primary-foreground/40">
-            © {new Date().getFullYear()} Priest Seva — priestseva.in. All rights reserved.
+            © {new Date().getFullYear()} Sri Laxmi Ganapathi Jyothishyalayam — priestseva.in. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <p className="text-xs text-primary-foreground/30">

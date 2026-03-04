@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Ramesh Kumar",
     location: "Hyderabad",
-    review: "Pandit ji performed Navagraha Pooja at our home with exceptional devotion and precision. Every mantra was recited perfectly, and the entire family felt truly blessed. We highly recommend Priest Seva to anyone seeking authentic Vedic rituals.",
+    review: "Pandit ji performed Navagraha Pooja at our home with exceptional devotion and precision. Every mantra was recited perfectly, and the entire family felt truly blessed. We highly recommend Sri Laxmi Ganapathi Jyothishyalayam to anyone seeking authentic Vedic rituals.",
     rating: 5,
     image: pujaCeremony2,
   },
@@ -38,7 +38,7 @@ const Testimonials = () => {
           </h2>
           <div className="section-divider mt-4" />
           <p className="mt-4 sm:mt-6 text-muted-foreground text-sm sm:text-base max-w-lg mx-auto">
-            Hear from families who have experienced the power of authentic Vedic rituals with Priest Seva.
+            Hear from families who have experienced the power of authentic Vedic rituals with Sri Laxmi Ganapathi Jyothishyalayam.
           </p>
         </div>
 
